@@ -1,0 +1,643 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1" np-srv="10"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+
+
+</title><link href="./data_template_files/font-awesome.css" rel="stylesheet" type="text/css">
+
+
+
+        <script type="text/javascript" src="./data_template_files/jquery-1.4.4.min.js"></script>
+
+        <script type="text/javascript" src="./data_template_files/jquery-ui-1.8.10.custom.min.js"></script>
+
+
+
+        <script type="text/javascript">
+
+var clientContext = new Object();
+
+clientContext.currentDirection = "ltr";
+
+clientContext.currentAlignment = "left";
+
+clientContext.currentReverseAlignment = "right";
+
+clientContext.currentLanguageShort = "en";
+
+clientContext.themeFolder = "Tmp_Gooney";
+
+clientContext.currentDateFormat = "dd/mm/yy";
+
+</script>
+
+<script type="text/javascript" src="./data_template_files/WebResource.axd"></script>
+
+<script type="text/javascript" src="./data_template_files/WebResource(1).axd"></script>
+
+<script type="text/javascript" src="./data_template_files/WebResource(2).axd"></script>
+
+<script type="text/javascript" src="./data_template_files/WebResource(3).axd"></script>
+
+<script type="text/javascript" src="./data_template_files/WebResource(4).axd"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+netpay.SessionTimeout.alertMessage = 'Your session is about to expire, to extend it click OK.';
+
+netpay.SessionTimeout.logoutMessage = 'Your session has expired, please login again.';
+
+netpay.SessionTimeout.init(18, 20);
+
+});</script>
+
+<script type="text/javascript">
+
+window.addEventListener('beforeunload', netpay.SessionTimeout.keepSession);
+
+</script>
+
+<script type="text/javascript">
+
+if (netpay == null) { var netpay = {} };
+
+if (netpay.ajaxApi == null) { netpay.ajaxApi = {} };
+
+netpay.ajaxApi.AjaxMethods =
+
+{
+
+
+
+KeepSession:function (successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'KeepSession', {}, successHandler, errorHandler, context);},
+
+GetMerchantNameAutoComplete:function (merchantNamePrefix, additionalParams, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetMerchantNameAutoComplete', {'merchantNamePrefix':merchantNamePrefix, 'additionalParams':additionalParams}, successHandler, errorHandler, context);},
+
+GetDebitTerminalTagAutoComplete:function (terminalTagPrefix, additionalParams, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetDebitTerminalTagAutoComplete', {'terminalTagPrefix':terminalTagPrefix, 'additionalParams':additionalParams}, successHandler, errorHandler, context);},
+
+GetDebitTerminalAutoComplete:function (terminalNamePrefix, additionalParams, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetDebitTerminalAutoComplete', {'terminalNamePrefix':terminalNamePrefix, 'additionalParams':additionalParams}, successHandler, errorHandler, context);},
+
+GetAccountNumberAutoComplete:function (accountNamePrefix, additionalParams, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetAccountNumberAutoComplete', {'accountNamePrefix':accountNamePrefix, 'additionalParams':additionalParams}, successHandler, errorHandler, context);},
+
+GetDenormalizedTransaction:function (transactionID, transactionStatus, isChargeback, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetDenormalizedTransaction', {'transactionID':transactionID, 'transactionStatus':transactionStatus, 'isChargeback':isChargeback}, successHandler, errorHandler, context);},
+
+GetTransactionPrintSlip:function (transactionID, transactionStatus, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetTransactionPrintSlip', {'transactionID':transactionID, 'transactionStatus':transactionStatus}, successHandler, errorHandler, context);},
+
+GetTransactionCreateInvoice:function (transactionID, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetTransactionCreateInvoice', {'transactionID':transactionID}, successHandler, errorHandler, context);},
+
+GetSiteFeedback:function (subject, body, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetSiteFeedback', {'subject':subject, 'body':body}, successHandler, errorHandler, context);},
+
+GetCapture:function (transactionID, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetCapture', {'transactionID':transactionID}, successHandler, errorHandler, context);},
+
+DoCapture:function (transactionID, amount, comment, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'DoCapture', {'transactionID':transactionID, 'amount':amount, 'comment':comment}, successHandler, errorHandler, context);},
+
+ProcessRefundRequest:function (transactionID, transactionStatus, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'ProcessRefundRequest', {'transactionID':transactionID, 'transactionStatus':transactionStatus}, successHandler, errorHandler, context);},
+
+ProcessRefund:function (companynum, HashKey, transactionID, transactionStatus, amount, comment, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'ProcessRefund', {'companynum':companynum, 'HashKey':HashKey, 'transactionID':transactionID, 'transactionStatus':transactionStatus, 'amount':amount, 'comment':comment}, successHandler, errorHandler, context);},
+
+GetRefundRequest:function (transactionID, transactionStatus, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetRefundRequest', {'transactionID':transactionID, 'transactionStatus':transactionStatus}, successHandler, errorHandler, context);},
+
+RequestRefund:function (transactionID, transactionStatus, amount, comment, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'RequestRefund', {'transactionID':transactionID, 'transactionStatus':transactionStatus, 'amount':amount, 'comment':comment}, successHandler, errorHandler, context);},
+
+GetSeriesFromTransaction:function (transactionID, transactionStatus, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetSeriesFromTransaction', {'transactionID':transactionID, 'transactionStatus':transactionStatus}, successHandler, errorHandler, context);},
+
+CreateSeriesFromTransaction:function (transactionID, transactionStatus, charges, intervalCount, intervalUnit, amount, comment, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'CreateSeriesFromTransaction', {'transactionID':transactionID, 'transactionStatus':transactionStatus, 'charges':charges, 'intervalCount':intervalCount, 'intervalUnit':intervalUnit, 'amount':amount, 'comment':comment}, successHandler, errorHandler, context);},
+
+GetFilesAndNotesForTransaction:function (transactionID, transactionStatus, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'GetFilesAndNotesForTransaction', {'transactionID':transactionID, 'transactionStatus':transactionStatus}, successHandler, errorHandler, context);},
+
+FilesWindowForTransaction:function (transactionID, transactionStatus, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'FilesWindowForTransaction', {'transactionID':transactionID, 'transactionStatus':transactionStatus}, successHandler, errorHandler, context);},
+
+NoteWindowForTransaction:function (transactionID, transactionStatus, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'NoteWindowForTransaction', {'transactionID':transactionID, 'transactionStatus':transactionStatus}, successHandler, errorHandler, context);},
+
+ApplyNoteForTransaction:function (transactionID, transactionStatus, newNoteText, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'ApplyNoteForTransaction', {'transactionID':transactionID, 'transactionStatus':transactionStatus, 'newNoteText':newNoteText}, successHandler, errorHandler, context);},
+
+AddToBlacklist:function (transactionID, transactionStatus, successHandler, errorHandler, context){netpay.Ajax.call('AjaxMethods', 'AddToBlacklist', {'transactionID':transactionID, 'transactionStatus':transactionStatus}, successHandler, errorHandler, context);}}
+
+</script>
+
+
+
+
+
+        <script type="text/javascript">
+
+            $(function () { netpay.Timezone.convert(); });
+
+        </script>
+
+	<link rel="stylesheet" type="text/css" href="./data_template_files/style.css"><meta http-equiv="Cache-control" content="No-Cache"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="-1"></head>
+
+	<body style="height:auto;" data-new-gr-c-s-check-loaded="14.1010.0" data-gr-ext-installed="">
+
+		<form name="form1" method="post" action="" id="form1">
+
+<div>
+
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+
+</div>
+
+
+
+<script type="text/javascript">
+
+//<![CDATA[
+
+var theForm = document.forms['form1'];
+
+if (!theForm) {
+
+    theForm = document.form1;
+
+}
+
+function __doPostBack(eventTarget, eventArgument) {
+
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+
+        theForm.__EVENTTARGET.value = eventTarget;
+
+        theForm.__EVENTARGUMENT.value = eventArgument;
+
+        theForm.submit();
+
+    }
+
+}
+
+//]]>
+
+</script>
+
+
+
+
+
+<div>
+
+
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E70D4184">
+
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+
+</div>
+
+			<div class="table-iframe">
+
+				<div class="table-iframe-content">
+
+
+
+<div class="TransactionInfo">
+
+
+
+    <div class="TransactionInfo-offset"></div>
+
+    <div class="TransactionInfoDetalis">
+
+
+
+            <h3 class="title-transactionInfo"><i class="fa fa-user"></i>
+
+                Cardholder Info
+
+            </h3>
+
+            <div class="TransactionBoxInfo">
+
+                <div class="table">
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+                            Full Name :
+
+							Tara Stanley
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Phone:
+
+							520-143-4637x40342
+
+                        </div>
+
+                    </div>
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+                            Email:
+
+							imartinez@torres-price.net
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Personal Number:
+
+                              001-976-470-0426x938
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <h3 class="title-transactionInfo"><i class="fa fa-credit-card"></i>
+
+                Credit Card Details
+
+            </h3>
+
+            <div class="TransactionBoxInfo">
+
+                <div class="table">
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+                            Expiritaion date:
+
+							08/25
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Card Type:
+
+							mastercard*****5331
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Bin Country Code:
+
+							NR
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <h3 class="title-transactionInfo"><i class="fa fa-globe"></i>
+
+                Billing address
+
+            </h3>
+
+            <div class="TransactionBoxInfo">
+
+                <div class="table">
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+                            Country:
+
+							TD
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Zip Code:
+
+							33609
+
+                        </div>
+
+                    </div>
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+                            City:
+
+							New Lauren
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Address:
+
+							0267 Stephen Brooks Suite 802
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            
+            <h3 class="title-transactionInfo"><i class="fa fa-times-circle"></i>
+                Reason for the decline
+            </h3>
+            <div class="TransactionBoxInfo">
+                <div class="table">
+                    <div class="table-row">
+                        <div class="table-cell">
+                            Reply Code: 2304
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <h3 class="title-transactionInfo"><i class="fa fa-pencil-square-o"></i>
+
+                Transaction Info
+
+                -
+
+                
+
+            </h3>
+
+            <div class="TransactionBoxInfo">
+
+                <div class="table">
+
+                    <div class="table-row">
+
+                          <div class="table-cell">
+
+                            Amount :
+
+							205.2
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Credit type: Regular
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Installments: 1
+
+                        </div>
+
+                    </div>
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+                            Money Transfer: No record
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            IP Address: 68.58.0.22
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Order no': 8cc85c57-d7f4-44e5-8f8a-0696f0e4ae18
+
+                        </div>
+
+                    </div>
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+                            Source: ApprovedCharge
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Date:
+
+							<span>2021-02-05 09:50:02</span>
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Approval Number: 1092223622
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="padding-10-left padding-5-top padding-5-bottom">
+
+                    Bank reference number:
+
+				    rRNhQYINwkXkeOim
+
+                </div>
+
+                <div class="padding-10-left padding-5-top  padding-5-bottom">
+
+                    Comment:
+
+                    Networked systemic hierarchy
+
+                </div>
+
+                <div class="padding-10-left padding-5-top  padding-5-bottom">
+
+                    Reference Number 1: 2358
+
+                </div>
+
+                <div class="padding-10-left padding-5-top  padding-5-bottom">
+
+                    Card Present: No
+
+                </div>
+
+                <div class="padding-10-left padding-5-top  padding-5-bottom">
+
+                    Reference Number 2: cLfvXltqnLlenQTf
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <h3 class="title-transactionInfo"><i class="fa fa fa-money"></i>
+
+                Transaction References</h3>
+
+            <div class="TransactionBoxInfo">
+
+                <div class="table">
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                        <div class="table-row">
+
+                            <div class="table-cell">
+
+                                Original transaction:
+
+								<a href=""></a>
+
+                            </div>
+
+                        </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <h3 class="title-transactionInfo"><i class="fa  fa-usd"></i>
+
+                Fees
+
+            </h3>
+
+            <div class="TransactionBoxInfo">
+
+                <div class="table">
+
+                    <div class="table-row">
+
+                        <div class="table-cell">
+
+                            Ratio Fee:
+
+							10.26
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Transaction Fee:
+
+							0.5
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Chargeback:
+
+							0
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Handling:
+
+							0
+
+                        </div>
+
+                        <div class="table-cell">
+
+                            Retrieval:
+
+							0
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+    </div>
+
+    <div class="spacer"></div>
+
+</div>
+
+
+
+				</div>
+
+			</div>
+
+		</form>
+
+
+
+
+
+<div id="divMainBlockerProgressContainer" style="position: absolute; top: 319px; left: 836px; z-index: 51; display: none; border: 1px solid rgb(254, 206, 122); background-color: white;"><img src="./data_template_files/ajax-loader.gif" id="divMainBlockerProgressImage"><div id="divMainBlockerProgressText"></div></div><div id="divMainBlockerBackground" style="position: absolute; top: 0px; left: 0px; overflow: hidden; display: none; opacity: 0; z-index: 50; background-color: rgb(0, 0, 0); width: 1772px; height: 738px;"></div><img src="./data_template_files/ajax-loader.gif" style="display: none;"></body></html>

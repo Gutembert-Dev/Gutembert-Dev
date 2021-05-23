@@ -1,0 +1,21 @@
+version: "3"
+
+# All available services
+services:
+
+  # Computation
+  jupyter:
+    container_name: "DE_test_jupyter"
+    restart: "always"
+    build: services/jupyter
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    env_file:
+      - ./config/jupyter.env
+    volumes:
+      - ./notebooks/:/home/jovyan/work/notebooks
+      - ./data/:/home/jovyan/work/data
+      - ./src/:/home/jovyan/work/src
+    ports:
+      - 8888:8888
+    entrypoint: sh -c 'start-notebook.sh --NotebookApp.token=$$JUPYTER_PASSWORD'
